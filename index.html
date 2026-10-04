@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dial Gauge Simulator - ITI Practical Training</title>
+    <title>Dial Gauge Simulator - ITI Ankleshwar</title>
     <style>
         * {
             box-sizing: border-box;
@@ -32,6 +32,8 @@
             text-align: center;
             color: #4a5568;
             margin-bottom: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
         .sim-layout {
             display: flex;
@@ -126,13 +128,23 @@
         .btn:hover {
             background: #2b6cb0;
         }
+        /* Footer Credits */
+        .footer-credits {
+            margin-top: 25px;
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>ડાયલ ગેજ (Dial Gauge) સિમ્યુલેટર</h1>
-    <div class="subtitle">ઔદ્યોગિક તાલીમાર્થીઓ માટે ડિઝિજલ લર્નિંગ ટૂલ</div>
+    <div class="subtitle">ઔદ્યોગિક તાલીમ સંસ્થાના તાલીમાર્થીઓ માટે ડિઝિજલ લર્નિંગ ટૂલ</div>
 
     <div class="sim-layout">
         <!-- SVG Visual Dial Gauge -->
@@ -176,10 +188,11 @@
         <!-- Interactive Controls & Calculation -->
         <div class="controls-panel">
             <div class="control-group">
-                <label for="plungerSlider">પ્લંજરની મુવમેન્ટ (Plunger Movement):</label>
-                <input type="range" id="plungerSlider" min="0" max="10" step="0.01" value="3.45">
+                <label for="plungerSlider">પ્લંજર મુવમેન્ટ (+ / -) :</label>
+                <!-- Range set from -5.00 to +5.00 mm for dual movement -->
+                <input type="range" id="plungerSlider" min="-5.00" max="5.00" step="0.01" value="0.00">
                 <div style="text-align: right; font-weight: bold; margin-top: 5px; color: #2b6cb0;">
-                    સેટ કરેલું સ્થાન: <span id="sliderVal">3.45</span> mm
+                    સેટ કરેલું સ્થાન: <span id="sliderVal">+0.00</span> mm
                 </div>
             </div>
 
@@ -189,20 +202,20 @@
             <div class="calc-card" id="readoutBox">
                 <h3>રીડિંગની ગણતરી (Calculation Steps):</h3>
                 <div class="calc-row">
-                    <span>૧. નાનો ડાયલ (Small Dial - Full mm):</span>
-                    <span id="smallVal">3 mm</span>
+                    <span>૧. નાનો ડાયલ (Small Dial - mm):</span>
+                    <span id="smallVal">0 mm</span>
                 </div>
                 <div class="calc-row">
                     <span>૨. મોટો ડાયલ (Main Dial Divisions):</span>
-                    <span id="mainDivVal">45 કાપા</span>
+                    <span id="mainDivVal">0 કાપા (Clockwise)</span>
                 </div>
                 <div class="calc-row">
                     <span>૩. મોટા ડાયલનું માપ (Divisions × 0.01):</span>
-                    <span id="mainVal">0.45 mm</span>
+                    <span id="mainVal">0.00 mm</span>
                 </div>
                 <div class="calc-row calc-total">
                     <span>કુલ રીડિંગ (Total Reading):</span>
-                    <span id="totalVal">3.45 mm</span>
+                    <span id="totalVal">0.00 mm</span>
                 </div>
             </div>
         </div>
@@ -210,14 +223,20 @@
 
     <!-- Practical Instructions for Trainees -->
     <div class="instructions">
-        <h3>તાલીમાર્થીઓ માટે માપનની રીત અને માર્ગદર્શિકા:</h3>
+        <h3>ઔદ્યોગિક તાલીમ સંસ્થાના તાલીમાર્થીઓ માટે માપનની રીત અને માર્ગદર્શિકા:</h3>
         <ol>
             <li><strong>લીસ્ટ કાઉન્ટ (Least Count):</strong> ડાયલ ગેજનો લીસ્ટ કાઉન્ટ <b>0.01 mm</b> છે. (મુખ્ય ડાયલનો ૧ કાપો = 0.01 mm)</li>
-            <li><strong>નાનો ડાયલ (Small Dial):</strong> નાનો કાંટો આખા મિલિમીટર ($1\text{ mm}, 2\text{ mm}, 3\text{ mm} \dots$) દર્શાવે છે.</li>
-            <li><strong>મોટો ડાયલ (Main Dial):</strong> મોટો કાંટો મિલિમીટરનો સોમો ભાગ ($0.01\text{ mm}$) દર્શાવે છે. મોટો કાંટો ૧ પૂરો ફેરો ફરે એટલે $1\text{ mm}$ થાય.</li>
+            <li><strong>નાનો ડાયલ (Small Dial):</strong> નાનો કાંટો આખા મિલિમીટર (1 mm, 2 mm, 3 mm ...) દર્શાવે છે.</li>
+            <li><strong>મોટો ડાયલ (Main Dial):</strong> મોટો કાંટો મિલિમીટરનો સોમો ભાગ (0.01 mm) દર્શાવે છે. મોટો કાંટો ૧ પૂરો ફેરો ફરે એટલે 1 mm થાય.</li>
+            <li><strong>પોઝિટિવ અને નેગેટિવ માપન:</strong> પ્લંજર ઉપર જતાં કાંટો ક્લોકવાઈઝ (Positive) અને પ્લંજર નીચે આવતાં કાંટો એન્ટી-ક્લોકવાઈઝ (Negative) ફરે છે.</li>
             <li><strong>ઝીરો સેટિંગ (Zero Setting):</strong> માપન શરૂ કરતા પહેલા ડાયલ ગેજના પ્લંજરને થોડું દબાવી (Pre-load આપી) બેઝલને ફેરવીને કાંટા સામે '0' સેટ કરો.</li>
-            <li><strong>પ્રેક્ટિસ કરો:</strong> ઉપર આપેલા સ્લાઈડરને ખસેડીને અલગ-અલગ માપ સેટ કરો અને જાતે કાંટાનું સ્થાન જોઈને રીડિંગ ગણવાનો પ્રયત્ન કરો.</li>
+            <li><strong>પ્રેક્ટિસ કરો:</strong> ઉપર આપેલા સ્લાઈડરને ખસેડીને પ્લસ અથવા માઈનસ માપ સેટ કરો અને જાતે કાંટાનું સ્થાન જોઈને રીડિંગ ગણવાનો પ્રયત્ન કરો.</li>
         </ol>
+    </div>
+
+    <!-- Author Footer -->
+    <div class="footer-credits">
+        Created by Yuvrajsinh Kosamia, Mechanic Diesel, ITI Ankleshwar
     </div>
 </div>
 
@@ -294,36 +313,38 @@
 
     function updateSimulator() {
         const value = parseFloat(slider.value);
+        const sign = value > 0 ? "+" : (value < 0 ? "-" : "");
         
-        // Update Slider Label
-        document.getElementById('sliderVal').textContent = value.toFixed(2);
-
-        // Movement Calculations
-        const smallDialmm = Math.floor(value); // Full mm
-        const mainDialFraction = value - smallDialmm; // Fractional part
-        const mainDivisions = Math.round(mainDialFraction * 100);
+        // Update Slider Display Text
+        document.getElementById('sliderVal').textContent = (value > 0 ? "+" : "") + value.toFixed(2);
 
         // Rotation Angles
-        const mainAngle = value * 360; // 1 mm = 360 degrees
-        const smallAngle = value * 36; // 10 mm = 360 degrees (36 deg per mm)
+        const mainAngle = value * 360; // Positive = CW, Negative = CCW
+        const smallAngle = value * 36;
 
         // Apply Rotations to Needles
         mainPointer.setAttribute('transform', `rotate(${mainAngle})`);
         smallPointer.setAttribute('transform', `rotate(${smallAngle})`);
 
-        // Move Plunger Upwards (Visual)
-        const translateY = -value * 6; // Scale factor for visual movement
+        // Move Plunger Up/Down Visually
+        const translateY = -value * 6; // Positive moves up, Negative moves down
         plunger.setAttribute('transform', `translate(0, ${translateY})`);
         contactPoint.setAttribute('transform', `translate(0, ${translateY})`);
 
-        // Update Calculation Readout Panel
-        document.getElementById('smallVal').textContent = `${smallDialmm} mm`;
-        document.getElementById('mainDivVal').textContent = `${mainDivisions} કાપા`;
-        document.getElementById('mainVal').textContent = `${(mainDivisions * 0.01).toFixed(2)} mm`;
-        document.getElementById('totalVal').textContent = `${value.toFixed(2)} mm`;
+        // Calculations for Readout Panel
+        const absVal = Math.abs(value);
+        const mmVal = Math.floor(absVal);
+        const fracVal = Math.round((absVal - mmVal) * 100);
+
+        const directionText = value >= 0 ? "Clockwise (+)" : "Counter-Clockwise (-)";
+
+        document.getElementById('smallVal').textContent = `${value < 0 ? '-' : ''}${mmVal} mm`;
+        document.getElementById('mainDivVal').textContent = `${fracVal} કાપા (${directionText})`;
+        document.getElementById('mainVal').textContent = `${value < 0 ? '-' : ''}${(fracVal * 0.01).toFixed(2)} mm`;
+        document.getElementById('totalVal').textContent = `${(value > 0 ? "+" : "")}${value.toFixed(2)} mm`;
     }
 
-    // Toggle Readout Visibility for Quiz/Practice Mode
+    // Toggle Readout Visibility for Practice/Test Mode
     function toggleReadout() {
         const box = document.getElementById('readoutBox');
         if (box.style.display === 'none') {
@@ -334,9 +355,8 @@
     }
 
     slider.addEventListener('input', updateSimulator);
-    updateSimulator(); // Initial run
+    updateSimulator(); // Initial execution
 </script>
 
 </body>
 </html>
-
