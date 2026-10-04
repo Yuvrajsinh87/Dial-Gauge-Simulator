@@ -31,9 +31,16 @@
         .subtitle {
             text-align: center;
             color: #4a5568;
-            margin-bottom: 25px;
+            margin-bottom: 4px;
             font-size: 1.1rem;
             font-weight: 500;
+        }
+        .author-header {
+            text-align: center;
+            color: #2b6cb0;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
         .sim-layout {
             display: flex;
@@ -144,7 +151,8 @@
 
 <div class="container">
     <h1>ડાયલ ગેજ (Dial Gauge) સિમ્યુલેટર</h1>
-    <div class="subtitle">ઔદ્યોગિક તાલીમ સંસ્થાના તાલીમાર્થીઓ માટે ડિઝિજલ લર્નિંગ ટૂલ</div>
+    <div class="subtitle">ઔદ્યોગિક તાલીમ સંસ્થાના તાલીમાર્થીઓ માટે ડિજિટલ લર્નિંગ ટૂલ</div>
+    <div class="author-header">Created by Yuvrajsinh Kosamia, Mechanic Diesel, ITI Ankleshwar</div>
 
     <div class="sim-layout">
         <!-- SVG Visual Dial Gauge -->
@@ -313,7 +321,6 @@
 
     function updateSimulator() {
         const value = parseFloat(slider.value);
-        const sign = value > 0 ? "+" : (value < 0 ? "-" : "");
         
         // Update Slider Display Text
         document.getElementById('sliderVal').textContent = (value > 0 ? "+" : "") + value.toFixed(2);
